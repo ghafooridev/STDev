@@ -14,9 +14,10 @@ export const useStyles = makeStyles()(theme => ({
 			width: 200,
 			height: 200,
 			borderRadius: 4,
-
 		},
-
+		[theme.breakpoints.down('md')]: {
+			width: "100%"
+		},
 	},
 	content: {
 		width: "100%",

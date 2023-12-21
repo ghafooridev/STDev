@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { Button, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { useStyles } from "./styles";
-
+import Button from "@/components/Button";
 interface PostHeaderProps {
   title: string;
   showAddButton?: boolean;
@@ -19,11 +19,7 @@ const PostHeader = (props: PostHeaderProps) => {
   return (
     <Grid className={classes.header}>
       <Typography variant="h4">{title}</Typography>
-      {showAddButton && (
-        <Button variant="contained" onClick={onAdd} className="button">
-          + New Post
-        </Button>
-      )}
+      {showAddButton && <Button onClick={onAdd}>+ New Post</Button>}
     </Grid>
   );
 };

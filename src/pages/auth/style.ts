@@ -17,15 +17,14 @@ export const useStyles = makeStyles()(theme => ({
         backgroundColor: "white",
         padding: 20,
         "& h5": {
-            marginBottom: 40
-        },
-        "& img": {
-            marginBottom: 40
+            marginBottom: 40,
+            fontWeight: "bold"
         },
 
     },
     inputFile: {
         position: "relative",
+        marginBottom: 40,
         "& input": {
             display: "none"
         },
@@ -42,14 +41,24 @@ export const useStyles = makeStyles()(theme => ({
         "& input": {
             width: "100%"
         },
-        "& button": {
-            color: "#fff",
-            cursor: "pointer"
-        },
+
         "& span": {
             color: theme.palette.primary.main,
             cursor: "pointer"
-        }
-    },
+        },
+        "& button": {
+            marginTop: 40
+        },
 
+
+    },
+    half: {
+        justifyContent: "flex-start",
+    },
+    checkbox: {
+        width: "100%",
+        display: "flex",
+        justifyContent: "flex-start",
+        color: "#444"
+    }
 }))

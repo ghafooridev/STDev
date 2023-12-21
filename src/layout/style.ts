@@ -2,14 +2,11 @@ import { makeStyles } from "tss-react/mui"
 
 export const useStyles = makeStyles()(theme => ({
     root: {
-        margin: '0 280px',
-        [theme.breakpoints.down('lg')]: {
-            margin: "0 50px"
-        },
-        [theme.breakpoints.down('sm')]: {
-            margin: "0 5px"
-        },
+        height: "100vh",
+        width: "100%",
         backgroundColor: "#F6F6F6"
+    },
+    layout: {
     },
     container: {
         marginTop: 60,
@@ -20,9 +17,22 @@ export const useStyles = makeStyles()(theme => ({
         alignItems: "center",
         justifyContent: "space-between",
         backgroundColor: "white",
-        padding: 10,
-        width: "auto",
-        boxShadow: "0px 2px 2px 0px rgba(154, 154, 154, 0.25)"
+
+        width: "100%",
+        maxWidth: "100% !important",
+        boxShadow: "0px 2px 2px 0px rgba(154, 154, 154, 0.25)",
+        padding: "10px",
+        paddingLeft: "380px !important",
+        paddingRight: "380px !important",
+        [theme.breakpoints.down('lg')]: {
+            paddingLeft: "50px !important",
+            paddingRight: "50px !important",
+        },
+        [theme.breakpoints.down('sm')]: {
+            paddingLeft: "10px !important",
+            paddingRight: "10px !important",
+        },
+
     },
     title: {
         color: theme.palette.primary.main,

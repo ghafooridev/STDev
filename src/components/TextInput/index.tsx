@@ -11,6 +11,7 @@ interface TextInputProps {
   multiline?: boolean;
   select?: boolean;
   options?: { id: string; name: string }[];
+  width?: string;
 }
 const TextInput = (props: TextInputProps) => {
   const {
@@ -23,17 +24,17 @@ const TextInput = (props: TextInputProps) => {
     select,
     options,
     value,
+    width,
   } = props;
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
     if (typeof onChange === "function") onChange(e);
   };
   return (
     <TextField
       label={label}
       variant="outlined"
-      style={{ width: "100%", borderRadius: 10 }}
+      style={{ width: width ?? "100%", borderRadius: 10 }}
       onChange={onChangeInput}
       value={value}
       name={name}

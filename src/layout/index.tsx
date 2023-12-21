@@ -10,8 +10,10 @@ const Layout = (props: LayoutProps) => {
   const { classes } = useStyles();
   return (
     <div className={classes.root}>
-      <Header />
-      <Grid className={classes.container}>{props.children}</Grid>
+      <div className={classes.layout}>
+        <Header />
+        <Grid className={classes.container}>{props.children}</Grid>
+      </div>
     </div>
   );
 };

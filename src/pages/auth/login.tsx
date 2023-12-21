@@ -1,18 +1,25 @@
 import { useState, ChangeEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Container, Grid, Typography } from "@mui/material";
+import {
+  Checkbox,
+  Container,
+  FormControlLabel,
+  Grid,
+  Typography,
+} from "@mui/material";
 import { toast } from "react-toastify";
 import { useStyles } from "./style";
 import { RegisterInterface } from "@/constants/enum";
 import TextInput from "@/components/TextInput";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import { useLogin } from "@/api/auth";
+import Button from "@/components/Button";
 
 const Register = () => {
   const { classes } = useStyles();
   const navigate = useNavigate();
   const [, setToken] = useLocalStorage("token", null);
-  const [user, setUser] = useLocalStorage("user", null);
+  const [, setUser] = useLocalStorage("user", null);
   const [state, setState] = useState<
     Pick<RegisterInterface, "email" | "password">
   >({
@@ -73,8 +80,11 @@ const Register = () => {
             type="password"
           />
         </Grid>
+        <Grid className={classes.checkbox}>
+          <FormControlLabel control={<Checkbox />} label="Remember me" />
+        </Grid>
         <Grid className={classes.content}>
-          <Button variant="contained" onClick={onLogin}>
+          <Button onClick={onLogin}>
             {loginMutation.isLoading ? "loading ..." : "Sign In"}
           </Button>
         </Grid>

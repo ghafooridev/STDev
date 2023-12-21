@@ -1,13 +1,14 @@
-import { useState, ChangeEvent, useEffect, useMemo } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { Avatar, Button, Container, Grid, Typography } from "@mui/material";
+import { useState, ChangeEvent, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { Avatar, Container, Grid, Typography } from "@mui/material";
 import { toast } from "react-toastify";
 import { useStyles } from "./styles";
-import { PostInterface, RegisterInterface } from "@/constants/enum";
+import { PostInterface } from "@/constants/enum";
 import FakePostImage from "@/assets/img/FakePostImage.png";
 import TextInput from "@/components/TextInput";
-import { CategoryList, EMAIL_REGEX } from "@/constants";
+import { CategoryList } from "@/constants";
 import { useAddPost, useEditPost, useGetPost } from "@/api/posts";
+import Button from "@/components/Button";
 
 const Register = () => {
   const { classes } = useStyles();
@@ -17,7 +18,7 @@ const Register = () => {
   const [state, setState] = useState<PostInterface>({
     title: "",
     description: "",
-    image: "",
+    image: null,
     file: null,
     category: "1",
   });
@@ -34,7 +35,7 @@ const Register = () => {
   };
 
   const imageToFile = () => {
-    return fetch(state.image)
+    return fetch(state.image!)
       .then((res) => res.blob())
       .then((myBlob) => {
         const myFile = new File([myBlob], "image.png", { type: "image/png" });
@@ -144,6 +145,11 @@ const Register = () => {
                   : state.file ?? FakePostImage
               }
               sx={{ width: 140, height: 140 }}
+              style={
+                error?.image
+                  ? { border: "1px solid red", borderRadius: 10 }
+                  : { border: "none" }
+              }
             />
           </label>
           <Typography variant="caption" color="error">
@@ -164,7 +170,7 @@ const Register = () => {
         </div>
         <Grid className={classes.content}>
           <TextInput
-            label="title"
+            label="Title"
             name="title"
             value={state.title}
             onChange={onChangeInput}
@@ -183,7 +189,7 @@ const Register = () => {
         </Grid>
         <Grid className={classes.content}>
           <TextInput
-            label="category"
+            label="Category"
             name="category"
             value={state.category}
             onChange={onChangeInput}
@@ -194,7 +200,7 @@ const Register = () => {
         </Grid>
 
         <Grid className={classes.content}>
-          <Button variant="contained" onClick={onSubmit}>
+          <Button onClick={onSubmit}>
             {addPost.isLoading ? "loading ..." : id ? "Update" : "Create"}
           </Button>
         </Grid>

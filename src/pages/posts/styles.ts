@@ -2,7 +2,18 @@ import { makeStyles } from "tss-react/mui"
 
 export const useStyles = makeStyles()(theme => ({
 	container: {
-		paddingTop: theme.spacing(3)
+		width: "100%",
+		maxWidth: "100% !important",
+		paddingLeft: "380px !important",
+		paddingRight: "380px !important",
+		[theme.breakpoints.down('lg')]: {
+			paddingLeft: "50px !important",
+			paddingRight: "50px !important",
+		},
+		[theme.breakpoints.down('sm')]: {
+			paddingLeft: "10px !important",
+			paddingRight: "10px !important",
+		},
 	},
 	content: {
 		display: "flex",
@@ -16,8 +27,9 @@ export const useStyles = makeStyles()(theme => ({
 				justifyContent: "center"
 			}
 		},
-		[theme.breakpoints.down('sm')]: {
-			flexDirection: "column"
+		[theme.breakpoints.down('md')]: {
+			flexDirection: "column",
+			width: "100%"
 		},
 	},
 	modal: {

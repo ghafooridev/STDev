@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import {
   Container,
   Grid,
-  Stack,
   Pagination,
   Modal,
   Typography,
@@ -95,6 +94,7 @@ const Posts = () => {
             shape="rounded"
             page={offset}
             onChange={onChangePage}
+            style={{ marginTop: 200 }}
           />
         </Grid>
       </Container>

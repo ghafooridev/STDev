@@ -14,7 +14,7 @@ export interface PostInterface {
 	id?: string
 	title: string
 	description: string
-	image: string
+	image: string | null
 	file: any
 	category: string
 

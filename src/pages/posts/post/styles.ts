@@ -15,15 +15,15 @@ export const useStyles = makeStyles()(theme => ({
         borderRadius: 10,
         padding: 20,
         "& h5": {
-            marginBottom: 40
+            marginBottom: 40,
+            fontWeight: "bold"
         },
-        "& img": {
-            marginBottom: 40
-        },
+
 
     },
     inputFile: {
         position: "relative",
+        marginBottom: 40,
         "& input": {
             display: "none"
         },

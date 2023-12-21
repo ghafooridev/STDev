@@ -1,6 +1,6 @@
-import { useState, KeyboardEvent, ChangeEvent, useEffect } from "react";
+import { useState, ChangeEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Avatar, Button, Container, Grid, Typography } from "@mui/material";
+import { Avatar, Container, Grid, Typography } from "@mui/material";
 import { toast } from "react-toastify";
 import { useStyles } from "./style";
 import { RegisterInterface } from "@/constants/enum";
@@ -8,6 +8,7 @@ import FakeAvatar from "@/assets/img/FakeAvatar.png";
 import TextInput from "@/components/TextInput";
 import { useRegister } from "@/api/auth";
 import { EMAIL_REGEX } from "@/constants";
+import Button from "@/components/Button";
 
 const Register = () => {
   const { classes } = useStyles();
@@ -82,7 +83,7 @@ const Register = () => {
     } else {
       setError(registerMutation.error?.response.data);
     }
-  }, [registerMutation]);
+  }, [registerMutation.status]);
 
   return (
     <div className={classes.root}>
@@ -92,7 +93,7 @@ const Register = () => {
         </Typography>
 
         <div className={classes.inputFile}>
-          <label for="file-input">
+          <label htmlFor="file-input">
             <Avatar
               src={state.image ? URL.createObjectURL(state.image) : FakeAvatar}
               sx={{ width: 140, height: 140 }}
@@ -127,13 +128,14 @@ const Register = () => {
             error={error?.lastName}
           />
         </Grid>
-        <Grid className={classes.content}>
+        <Grid className={`${classes.content} ${classes.half}`}>
           <TextInput
             label="Email"
             name="email"
             value={state.email}
             onChange={onChangeInput}
             error={error?.email}
+            width={"49%"}
           />
         </Grid>
         <Grid className={classes.content}>
@@ -155,7 +157,7 @@ const Register = () => {
           />
         </Grid>
         <Grid className={classes.content}>
-          <Button variant="contained" onClick={onRegister}>
+          <Button onClick={onRegister}>
             {registerMutation.isLoading ? "loading ..." : "Sign Up"}
           </Button>
         </Grid>
